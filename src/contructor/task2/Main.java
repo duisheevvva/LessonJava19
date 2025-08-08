@@ -13,7 +13,6 @@ public class Main {
 
         Student student1 = new Student(name, age, 20);
         Student student2 = new Student("Ayana", 14, 30);
-
         Student[] students = {student1, student2};
         Course course = new Course("Ja" ,"Aizat",students);
 
