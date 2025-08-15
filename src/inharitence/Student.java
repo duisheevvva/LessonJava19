@@ -1,6 +1,6 @@
 package inharitence;
 
- public class Student extends Person {
+  class Student extends Person {
      // classtyn ichinde gana korunot
     private  int age;
 
