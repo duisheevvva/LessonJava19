@@ -6,8 +6,6 @@ public class Main {
         Student student = new Student();
         student.age=20;
         Student.method();
-
-        Student.Student
         Student.name ="Saikal";
         Student.method();
         staticMethod();
