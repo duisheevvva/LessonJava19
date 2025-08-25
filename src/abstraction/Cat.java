@@ -11,7 +11,8 @@ public class Cat extends Animal{
 
     @Override
     public void abstractMethod() {
-        System.out.println("miau-miau");
+
     }
+
 
 }
