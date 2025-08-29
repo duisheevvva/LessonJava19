@@ -1,67 +1,11 @@
-package crud.task2;
+package crud.task2.service.serviceImpl;
 
-import java.time.LocalDate;
+import crud.task2.models.Customer;
+import crud.task2.service.CustomerService;
+
 import java.util.Arrays;
 
-public class Customer {
-    private long id;
-    private String fullName;
-    private String email;
-    private LocalDate dateOfBirth;
-    private String phoneNumber;
-
-
-    public Customer() {
-    }
-
-    public Customer(long id, String fullName, String email, LocalDate dateOfBirth, String phoneNumber) {
-        this.id = id;
-        this.fullName = fullName;
-        this.email = email;
-        this.dateOfBirth = dateOfBirth;
-        this.phoneNumber = phoneNumber;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public LocalDate getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(LocalDate dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
+public class CustomerServiceImpl implements CustomerService {
     // dannyidy saktash uchun massiv tuzobuz
     // TODO Database
     Customer[] customers = new Customer[10];
@@ -69,16 +13,19 @@ public class Customer {
 
     //TODO  CRUD
     // TODO  C - Create
+    @Override
     public void createCustomer(Customer customer) {
         customers[count++] = customer;
         System.out.println("Success");
     }
 
     // TODO R - Read
+    @Override
     public Customer[] getAllCustomers() {
         return customers;
     }
 
+    @Override
     public Customer getByIdCustomer(long id) {
         for (Customer customer : customers) {
             if (customer.getId() == id) {
@@ -89,6 +36,7 @@ public class Customer {
     }
 
     // TODO U - UPDATE
+    @Override
     public void updateCustomerById(long id, Customer newCustomer) {
         // TODO Variant 1
 //        Customer oldCustomer = getByIdCustomer(id);
@@ -104,12 +52,13 @@ public class Customer {
                 System.out.println("Success");
                 break;
             } else {
-                System.out.println("Customer with id:  " + id + "not found!");
+                System.out.println("Customer with id:  " + id + " not found!");
             }
         }
     }
 
     // TODO D - DELETE
+    @Override
     public void deleteCustomerById(long id) {
         // index ochurobuz oshonduktan default index tuzobuz
         int index = -1;
@@ -138,22 +87,11 @@ public class Customer {
         // jany massivdin ichine saktaibyz
 
 
-        for (int i = 0; i < newCustomers.length; i++) {
+        for (int i = index; i < newCustomers.length; i++) {
             newCustomers[i] = customers[i + 1];
         }
         System.out.println(Arrays.toString(newCustomers));
 
         customers = newCustomers;
-    }
-
-
-
-    @Override
-    public String toString() {
-        return "\n Id: " + id + '\n' +
-                "FullName: " + fullName + '\n' +
-                "Email: " + email + '\n' +
-                "DateOfBirth: " + dateOfBirth + '\n' +
-                "PhoneNumber: " + phoneNumber;
     }
 }
